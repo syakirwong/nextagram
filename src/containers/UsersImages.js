@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const UsersImages = ({ userId }) => {
   const style = {
     width: "100%",
     height: "250px",
     objectFit: "cover",
+    cursor: "pointer",
   };
 
   const [userImages, updateUserImages] = useState([]);
 
-  //   console.log(userId);
+  let history = useHistory();
+
+  const handleOnClickImage = (id) => {
+    history.push(`/image/${id}`);
+  };
 
   useEffect(() => {
     axios
@@ -20,7 +26,6 @@ const UsersImages = ({ userId }) => {
         },
       })
       .then((response) => {
-        // console.log(response);
         updateUserImages(response.data);
       });
   }, [userId]);
@@ -36,6 +41,9 @@ const UsersImages = ({ userId }) => {
                 src={userImage.url}
                 alt={userImage.url}
                 key={userImage.id}
+                onClick={() => {
+                  handleOnClickImage(userImage.id);
+                }}
               ></img>
             </div>
           );

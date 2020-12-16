@@ -8,6 +8,7 @@ import NavBar from "./components/Navbar";
 import { Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import UploadImage from "./page/UploadImage";
+import PreviewImage from "./page/PreviewImage";
 
 function App() {
   const [users, updateUsers] = useState([]);
@@ -18,11 +19,9 @@ function App() {
     localStorage.getItem("username"),
     localStorage.getItem("profilepicture"),
   ]);
-  // console.log(loggedInUser);
 
   useEffect(() => {
     axios.get("https://insta.nextacademy.com/api/v1/users").then((response) => {
-      // console.log(response.data);
       updateUsers(response.data);
     });
   }, []);
@@ -47,6 +46,9 @@ function App() {
       </Route>
       <Route path="/profile/:username/uploadimage">
         <UploadImage></UploadImage>
+      </Route>
+      <Route path="/image/:id">
+        <PreviewImage jwt={localStorage.getItem("jwt")}></PreviewImage>
       </Route>
     </>
   );

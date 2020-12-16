@@ -51,11 +51,15 @@
   background-color: powderblue;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.like:hover {
+  background-color: beige;
+}
+
+.comment-form {
+  display: flex;
+  align-items: center;
+}
+
+.comment {
+  flex-grow: 2;
 }

@@ -7,7 +7,6 @@ const ProfilePage = () => {
   const userId = useParams();
   const [userImages, updateUserImages] = useState([]);
   const [userDetails, updateUserDetails] = useState([]);
-  //   console.log(userId);
   const style = {
     height: "300px",
     width: "100%",
